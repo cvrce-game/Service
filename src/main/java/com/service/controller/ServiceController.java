@@ -33,6 +33,11 @@ public class ServiceController {
 	@Autowired
 	EntityManager em;
 
+	@RequestMapping("/hi")
+	public String sayHi() {
+		return "Hi";
+	}
+	
 	@RequestMapping("/")
 	public Iterable<Employee> sayHello() {
 		Iterable<Employee> employee = systemRepository.findAll();
