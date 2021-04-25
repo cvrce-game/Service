@@ -1,0 +1,64 @@
+create schema db03;
+CREATE TABLE db03.Employee (
+    name varchar(50),
+    employeeId integer(10),
+    addressrowId integer(10),
+    primary key(employeeId),
+	foreign  key(addressrowId) REFERENCES db03.Address(addressrowId)
+);
+CREATE TABLE db03.Address (
+    addressrowId integer(50),
+    addressLine1 varchar(80),
+    addressLine2 varchar(80),
+    postalcode varchar(10),
+    primary key(addressrowId)
+);
+desc db03.Employee;
+desc db03.Address;
+
+insert into db03.address values(0,'Madhapur','HitechCity','500081');
+insert into db03.employee values(0,'Papun',0);
+insert into db03.address values(10002,'Madhapur','HitechCity','500081');
+insert into db03.employee values('Ex1','002',10002);
+commit;
+select *from db03.employee;
+select *from db03.address;
+
+drop table db03.employee;
+drop table db03.Address;
+
+truncate table db03.employee;
+truncate table db03.Address;
+delete from db03.Address where addressrowId ='10';
+
+CREATE TABLE db03.Student (
+    studentId integer(50),
+    email varchar(80),
+    firstName varchar(80),
+    lastName varchar(80),
+    accountId integer(50),
+    primary key(studentId)
+);
+CREATE TABLE db03.AccountEntity (
+	slno integer(10),
+    accountId integer(50),
+    accountNumber varchar(80),
+    primary key(slno)    
+);
+
+desc db03.Student;
+desc db03.AccountEntity;
+
+ALTER TABLE db03.Student DROP FOREIGN KEY accountId;
+ALTER TABLE db03.AccountEntity DROP FOREIGN KEY accountId;
+
+select *from db03.Student;
+select *from db03.AccountEntity;
+
+drop table db03.Student;
+drop table db03.AccountEntity;
+
+truncate table db03.Student;
+truncate table db03.AccountEntity;
+delete from db03.Student where email = 'papun.1424@gmail.com';
+
